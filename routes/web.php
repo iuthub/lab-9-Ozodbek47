@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -10,7 +9,6 @@
 | to using a Closure or controller method. Build something great!
 |
 */
-
 Route::get('/', [
     'uses' => 'PostController@getIndex',
     'as' => 'blog.index'
@@ -22,6 +20,10 @@ Route::get('post/{id}', [
 Route::get('about', function () {
     return view('other.about');
 })->name('other.about');
+Route::get('like/{id}', [
+    'uses' => 'PostController@getLikePost',
+    'as' => 'blog.post.like'
+]);
 Route::group(['prefix' => 'admin'], function() {
     Route::get('', [
         'uses' => 'PostController@getAdminIndex',
